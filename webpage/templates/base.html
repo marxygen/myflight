@@ -1,0 +1,12 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Flight information{% endblock %}
+
+{% block content %}
+<div style="margin: 20px;">
+    <h1 class="display-2">MyFlight</h1>
+    <p class="lead">
+        Below you will find information about currently tracked flights. You can add more by clicking the <b>Add flight</b> button
+    </p>
+    {% block page_content %}{% endblock %}
+</div>
+{% endblock %}

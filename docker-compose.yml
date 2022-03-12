@@ -1,0 +1,26 @@
+services:
+  webpage:
+    build:
+      context: .
+      dockerfile: ./Dockerfiles/Flask.Dockerfile
+    container_name: webpage
+    command: flask run --host 0.0.0.0 --port 80
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./webpage/:/usr/src/webpage/
+    ports:
+      - "80:80"
+  postgis:
+    image: postgis/postgis:latest
+    container_name: postgis
+    restart: always
+    volumes:
+      - postgis_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    expose:
+      - "5432"
+volumes:
+  postgis_data:
