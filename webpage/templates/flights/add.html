@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+<center>
+    <h2>Add flight</h2>
+    {% if get_flashed_messages() %}
+        <div class="alert alert-danger" role="alert">
+            {{"\n".join(get_flashed_messages())}}
+        </div>
+    {% endif %}
+    <form action="" method="POST">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Flight code" name="flight-code" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-outline-dark">Add flight</button>
+        <br><br>
+        <button type="button" class="btn btn-secondary"  onclick="location.href='/flights/';">Back to flights list</button>
+    </form>
+</center>
+{% endblock %}
