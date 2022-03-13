@@ -19,7 +19,6 @@ def add_flight():
                 flight_data = fetch_flight_information(code)
                 if not flight_data:
                     raise Exception(f'No flight data is available')
-                flight_data = flight_data[0]
                 create_flight(code=code, **flight_data)
                 flash(f'Flight "{code}" has been successfully added', 'info')
                 return redirect(url_for('flights.show_index'))

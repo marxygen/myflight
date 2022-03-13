@@ -21,7 +21,7 @@ class FlightsAPI(metaclass=Singleton):
                              "`AIRLABS_API_KEY` environment variable or passing `api_key` param to FlightsAPI " \
                              "constructor "
 
-    def __request(self, endpoint: str = 'flights',
+    def __request(self, endpoint: str = 'flight',
                   query_params: dict = None) -> dict:
         """
         Make a request to Airlab API
@@ -57,3 +57,15 @@ class FlightsAPI(metaclass=Singleton):
             a dict: JSON response
         """
         return self.__request(query_params={'flight_iata': flight_code})
+
+    def get_airport_data(self, airport_code: str) -> dict:
+        """
+        Get information about an airport
+
+        Args:
+            airport_code: IATA airport code
+
+        Returns:
+            A dictionary of JSON data
+        """
+        return self.__request('airport', query_params={'iata_code': airport_code})

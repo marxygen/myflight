@@ -2,8 +2,8 @@
 Microservice-based application to monitor the status of your flight in *almost* real time
 
 # Goals
-- [ ] Add flights to the database
-- [ ] Fetch flight data
+- [x] Add flights to the database
+- [x] Fetch flight data
 - [ ] Display approximate arrival time
 - [ ] Display route on the map
 - [ ] Notify when airplane lands or is delayed

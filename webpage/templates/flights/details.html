@@ -1,19 +1,13 @@
-{% extends "base.html" %}
+{% extends "bootstrap/base.html" %}
 
-{% block page_content %}
-{% if get_flashed_messages(category_filter=('info', )) %}
-<br><br>
-<div class="alert alert-info" role="alert">
-  {{"\n".join(get_flashed_messages(category_filter=('info', )))}}
-</div>
-{% endif %}
-{% if get_flashed_messages(category_filter=('error', )) %}
-<br><br>
-<div class="alert alert-error" role="alert">
-  {{"\n".join(get_flashed_messages(category_filter=('error', )))}}
-</div>
-{% endif %}
-<br><br>
+{% block title %}
+Information about {{flight.code}}
+{% endblock %}
+
+{% block content %}
+<center>
+    <h2>{{flight.code}}</h2>
+</center>
 <table class="table table-bordered table-hover table-sm">
   <thead class="thead-dark">
     <tr>
@@ -37,7 +31,6 @@
     </tr>
   </thead>
   <tbody>
-    {% for flight in flights %}
     <tr onclick="location.href='{{flight.code}}/';">
       <th scope="col">{{flight.code}}</th>
       <th scope="col">{{flight.reg_number}}</th>
@@ -57,7 +50,11 @@
       <th scope="col">{{flight.delayed or "No"}}</th>
       <th scope="col">{{flight.status}}</th>
     </tr>
-    {% endfor %}
   </tbody>
 </table>
+<div style="padding: 20px;">
+    <span><b>Departure airport:</b></span>
+    <br>
+    <span><b>Arrival airport:</b></span>
+</div>
 {% endblock %}

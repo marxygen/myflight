@@ -31,3 +31,8 @@ def create_flight(**kwargs):
 def get_flights():
     with Session(engine) as session:
         return list(session.scalars(select(Flight)))
+
+
+def get_flight(code: str):
+    with Session(engine) as session:
+        return list(session.scalars(select(Flight).where(Flight.code == code)))

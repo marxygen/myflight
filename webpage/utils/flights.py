@@ -1,6 +1,7 @@
 from .radar_api import FlightsAPI
 from typing import Tuple
 from webpage.utils.exceptions import NotFound, APIRequestError
+import logging
 
 
 def fetch_flight_information(flight_code: str, suppress: bool = True) -> dict:
@@ -18,7 +19,8 @@ def fetch_flight_information(flight_code: str, suppress: bool = True) -> dict:
         flight_data = FlightsAPI().get_flight_data(flight_code)
         response = flight_data.get('response', {})
         if not response:
-            raise NotFound(f'Flight with code "{flight_code}" is not found')
+            logging.info(f'No flight data is available for "{flight_code}": {flight_data}')
+            raise NotFound(f'No flight data is available for "{flight_code}"')
         return response
     except (NotFound, APIRequestError):
         if suppress:

@@ -17,9 +17,11 @@ class Flight(Base):
     v_speed = Column(Float(3))
     dep_iata = Column(String(20))
     arr_iata = Column(String(20))
-    departure_time = Column(DateTime(timezone=True), nullable=True)
-    estimated_arrival_time = Column(DateTime(timezone=True), nullable=True)
-    aircraft_icao = Column(String(20))
+    dep_gate = Column(String(20))
+    dep_time_utc = Column(DateTime(timezone=True), nullable=True)
+    arr_time_utc = Column(DateTime(timezone=True), nullable=True)
+    model = Column(String(20))
+    delayed = Column(String(20))
     status = Column(String(10))
 
     def __repr__(self):
